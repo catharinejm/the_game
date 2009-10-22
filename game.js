@@ -7,7 +7,7 @@ Game = {
       RIGHT: 39,
       UP: 38,
       DOWN: 40
-    };
+    }
 
     Game.keyBindings = function(e) {
       switch(e.which) {

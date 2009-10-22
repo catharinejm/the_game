@@ -8,20 +8,24 @@ function Player() {
   this.moveLeft = function() {
     this._x -= this._moveDistance;
     this._avatar.animate({ cx: this._x }, this._moveTime);
+    this._avatar.node.trigger('player:moveleft')
   }
 
   this.moveRight = function() {
     this._x += this._moveDistance;
     this._avatar.animate({ cx: this._x }, this._moveTime);
+    this._avatar.node.trigger('player:moveright')
   }
 
   this.moveUp = function() {
     this._y -= this._moveDistance;
     this._avatar.animate({ cy: this._y }, this._moveTime);
+    this._avatar.node.trigger('player:moveup')
   }
 
   this.moveDown = function() {
     this._y += this._moveDistance;
     this._avatar.animate({ cy: this._y }, this._moveTime);
+    this._avatar.node.trigger('player:movedown')
   }
 };
