@@ -1,3 +1,3 @@
 $(function() {
-  Game.start();
+  Game.init();
 });
