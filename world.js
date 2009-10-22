@@ -5,7 +5,9 @@ function World() {
 }
 
 $.extend(World.prototye, {
-  
+  grantAvatar: function(x, y) {
+    return this._tile.circle(x, y, 15);
+  }
 });
 
 

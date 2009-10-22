@@ -1,2 +1,3 @@
 $(function() {
+  Game.start();
 });

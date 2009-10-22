@@ -1,44 +1,34 @@
-function Game() {
-  this._world = new World();
+Game = {};
+Game.world = new World();
+Game.player = new Player();
+Game.keys = {
+  LEFT: 37,
+  RIGHT: 39,
+  UP: 38,
+  DOWN: 40
+};
+
+Game.keyBindings = function(e) {
+  switch(e.which) {
+  case this.keys.LEFT:
+    this.player.moveLeft();
+    return false;
+  case this.keys.RIGHT:
+    this.player.moveRight();
+    return false;
+  case this.keys.UP:
+    this.player.moveUp();
+    return false;
+  case this.keys.DOWN:
+    this.player.moveDown();
+    return false;
+  }
 }
 
-$.extend(Game.prototye, {
-  start: function() {
-    $(document).keydown(this.keyBindings);
-  },
+Game.start = function() {
+  $(document).keydown(this.keyBindings);
+}
 
-  stop: function() {
-    $(document).unbind('keydown', this.keybindings);
-  },
-
-  keyBindings: function(e) {
-    switch(e.which) {
-    case 37:
-      if (x - 8 > 0) {
-        x -= 8;
-        c.animate({cx: x}, 100);
-      }
-      return false;
-    case 38:
-      if (y - 8 > 0) {
-        y -= 8;
-        c.animate({cy: y}, 100);
-      }
-      return false;
-    case 39:
-      if (c.attrs.cx + 8 < 640) {
-        x += 8;
-        c.animate({cx: x}, 100);
-      }
-      return false;
-    case 40:
-      if (c.attrs.cy + 8 < 400) {
-        y += 8;
-        c.animate({cy: y}, 100);
-      }
-      return false;
-    }
-  }
-});
-
-
+Game.stop = function() {
+  $(document).unbind('keydown', this.keyBindings);
+}
