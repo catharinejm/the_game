@@ -2,7 +2,7 @@ class GameWindow < Gosu::Window
   include Gosu
   def initialize
     super(640, 480, false)
-    self.caption = 'Hello world!'
+    self.caption = 'The Game'
     @player = Player.new(self)
   end
 

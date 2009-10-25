@@ -1,12 +1,12 @@
 class Player
   include Gosu
-  Speed = 5
+  Speed = 2
   def initialize(window)
     @window = window
     @x = @window.width / 2
     @y = @window.height / 2
     @vx = @vy = 0
-    @sprite = Image.load_tiles(@window, "player.png", 33, 33, false)
+    @sprite = PlayerSprite.new(@window)
   end
 
   def button_down(id)
@@ -35,8 +35,16 @@ class Player
     end
   end
 
+  def direction
+    return :right if @vx > 0
+    return :left if @vx < 0
+    return :up if @vy < 0
+    return :down if @vy > 0
+    :still
+  end
+
   def draw
-    @sprite.draw(@x, @y, 0)
+    @sprite.send(direction).draw(@x, @y, 0)
   end
 
   def update
