@@ -1,7 +1,7 @@
 class PlayerSprite
   include Gosu
   def initialize(window)
-    @images = Image.load_tiles(window, "player.png", 40, 39, false)
+    @images = Image.load_tiles(window, "player.png", -2, -4, false)
     @animation = 0
     @last_frame_change = Time.now
   end
