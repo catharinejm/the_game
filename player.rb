@@ -1,18 +1,18 @@
 class Player
   include Gosu
+  SPEED = 2
   def initialize(window)
     @window = window
     @x = @window.width / 2
     @y = @window.height / 2
     @vx = @vy = 0
-    @speed = 2
     @sprite = PlayerSprite.new(@window)
   end
 
-  def start_down()  @vy = @speed  end
-  def start_up()    @vy = -@speed end
-  def start_left()  @vx = -@speed end
-  def start_right() @vx = @speed  end
+  def start_down()  @vy = SPEED  end
+  def start_up()    @vy = -SPEED end
+  def start_left()  @vx = -SPEED end
+  def start_right() @vx = SPEED  end
 
   def stop_down()  @vy = 0 end
   def stop_up()    @vy = 0 end
