@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'gosu'
 require 'game_window'
 require 'player_sprite'
