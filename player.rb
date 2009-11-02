@@ -1,6 +1,6 @@
 class Player
   include Gosu
-  SPEED = 2
+  Speed = 2
   def initialize(window)
     @window = window
     @x = @window.width / 2
@@ -9,15 +9,15 @@ class Player
     @sprite = PlayerSprite.new(@window)
   end
 
-  def start_down()  @vy = SPEED  end
-  def start_up()    @vy = -SPEED end
-  def start_left()  @vx = -SPEED end
-  def start_right() @vx = SPEED  end
+  def start_down()  @vy += Speed  end
+  def start_up()    @vy -= Speed end
+  def start_left()  @vx -= Speed end
+  def start_right() @vx += Speed  end
 
-  def stop_down()  @vy = 0 end
-  def stop_up()    @vy = 0 end
-  def stop_left()  @vx = 0 end
-  def stop_right() @vx = 0 end
+  def stop_down()  @vy -= Speed end
+  def stop_up()    @vy += Speed end
+  def stop_left()  @vx += Speed end
+  def stop_right() @vx -= Speed end
 
   def direction
     return :right if @vx > 0
