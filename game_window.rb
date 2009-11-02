@@ -1,14 +1,14 @@
 class GameWindow < Gosu::Window
   include Gosu
 
-  KEYS = {
+  MovementKeys = {
     KbDown  => :down,
     KbUp    => :up,
     KbLeft  => :left,
     KbRight => :right
   }
 
-  MENU = {
+  OtherKeys = {
     KbQ     => :exit
   }
 
@@ -16,19 +16,21 @@ class GameWindow < Gosu::Window
     super(640, 480, false)
     self.caption = 'The Game'
     @player = Player.new(self)
+    @box = Box.new self, 100, 100
   end
 
   def button_down(id)
-    @player.send("start_#{KEYS[id]}") if KEYS.has_key?(id)
-    send(MENU[id]) if MENU.has_key?(id)
+    @player.send("start_#{MovementKeys[id]}") if MovementKeys.has_key?(id)
+    send(OtherKeys[id]) if OtherKeys.has_key?(id)
   end
 
   def button_up(id)
-    @player.send("stop_#{KEYS[id]}") if KEYS.has_key?(id)
+    @player.send("stop_#{MovementKeys[id]}") if MovementKeys.has_key?(id)
   end
 
   def draw
     @player.draw
+    @box.draw
   end
 
   def update
