@@ -9,10 +9,10 @@ class Player
     @sprite = PlayerSprite.new(@window)
   end
 
-  def start_down()  @vy += Speed  end
+  def start_down()  @vy += Speed end
   def start_up()    @vy -= Speed end
   def start_left()  @vx -= Speed end
-  def start_right() @vx += Speed  end
+  def start_right() @vx += Speed end
 
   def stop_down()  @vy -= Speed end
   def stop_up()    @vy += Speed end
