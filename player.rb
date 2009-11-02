@@ -28,7 +28,7 @@ class Player
   end
 
   def draw
-    @sprite.send(direction).draw(@x - 20, @y - 20, 0)
+    @sprite.draw(direction, @x, @y)
   end
 
   def update
@@ -37,24 +37,10 @@ class Player
   end
 
   def update_x
-    new_x = @x + @vx
-    if new_x < 0
-      @x = @window.width - @vx
-    elsif new_x > @window.width
-      @x = @vx
-    else
-      @x = new_x
-    end
+    @x = (@x + @vx) % @window.width
   end
 
   def update_y
-    new_y = @y + @vy
-    if new_y < 0
-      @y = @window.height - @vy
-    elsif new_y > @window.height
-      @y = @vy
-    else
-      @y = new_y
-    end
+    @y = (@y + @vy) % @window.height
   end
 end
