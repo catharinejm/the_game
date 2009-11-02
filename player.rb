@@ -28,11 +28,20 @@ class Player
   end
 
   def draw
-    @sprite.send(direction).draw(@x, @y, 0)
+    @sprite.send(direction).draw(@x - 20, @y - 20, 0)
   end
 
   def update
-    @x += @vx
-    @y += @vy
+    unless off_screen?
+      @x += @vx
+      @y += @vy
+    end
+  end
+
+  def off_screen?
+    out = false
+    out = true unless (0..@window.width).include?(@x + @vx)
+    out = true unless (0..@window.height).include?(@y + @vy)
+    out
   end
 end
