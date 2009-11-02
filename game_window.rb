@@ -8,6 +8,10 @@ class GameWindow < Gosu::Window
     KbRight => :right
   }
 
+  MENU = {
+    KbQ     => :exit
+  }
+
   def initialize
     super(640, 480, false)
     self.caption = 'The Game'
@@ -16,6 +20,7 @@ class GameWindow < Gosu::Window
 
   def button_down(id)
     @player.send("start_#{KEYS[id]}") if KEYS.has_key?(id)
+    send(MENU[id]) if MENU.has_key?(id)
   end
 
   def button_up(id)
