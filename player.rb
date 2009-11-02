@@ -32,16 +32,29 @@ class Player
   end
 
   def update
-    unless off_screen?
-      @x += @vx
-      @y += @vy
+    update_x
+    update_y
+  end
+
+  def update_x
+    new_x = @x + @vx
+    if new_x < 0
+      @x = @window.width - @vx
+    elsif new_x > @window.width
+      @x = @vx
+    else
+      @x = new_x
     end
   end
 
-  def off_screen?
-    out = false
-    out = true unless (0..@window.width).include?(@x + @vx)
-    out = true unless (0..@window.height).include?(@y + @vy)
-    out
+  def update_y
+    new_y = @y + @vy
+    if new_y < 0
+      @y = @window.height - @vy
+    elsif new_y > @window.height
+      @y = @vy
+    else
+      @y = new_y
+    end
   end
 end
