@@ -7,8 +7,16 @@ function World() {
 }
 
 $.extend(World.prototype, {
-  grantAvatar: function(x, y, radius) {
-    return this._tile.circle(x, y, radius);
+  grantAvatar: function(x, y, width, height) {
+    var avatar = $('<div id="player"></div>');
+    avatar.css({ position: 'absolute',
+                 top: y + 'px',
+                 left: x + 'px',
+                 background: "url(player.png) no-repeat scroll 0 0",
+                 width: width + 'px',
+                 height: height + 'px'});
+    $(this._tile.canvas).parent().append(avatar);
+    return avatar;
   },
 
   monitor: function(event, callback) {
@@ -18,7 +26,6 @@ $.extend(World.prototype, {
   monitorSignals: function() {
     var self = this;
     this.monitor('player:move', function(event, player) {
-      console.log(player.left(), player.right() + '>' + self._width, player.top(), player.bottom() + '>' + self._height);
       if (player.left() < 0)
         player.moveRight();
       if (player.right() > self._width)
