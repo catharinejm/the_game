@@ -12,4 +12,9 @@ class Sprite
     @center_x = @width / 2
     @center_y = @height / 2
   end
+
+  def left_edge()   @center_x - @width  / 2 end
+  def right_edge()  @center_x + @width  / 2 end
+  def top_edge()    @center_y - @height / 2 end
+  def bottom_edge() @center_y + @height / 2 end
 end

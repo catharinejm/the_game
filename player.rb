@@ -37,10 +37,12 @@ class Player
   end
 
   def update_x
-    @x = (@x + @vx) % @window.width
+    new_x = (@x + @vx) % @window.width
+    @x = new_x if @window.coords_available?(new_x, @y)
   end
 
   def update_y
-    @y = (@y + @vy) % @window.height
+    new_y = (@y + @vy) % @window.height
+    @y = new_y if @window.coords_available?(@x, new_y)
   end
 end

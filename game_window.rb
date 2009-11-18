@@ -17,6 +17,7 @@ class GameWindow < Gosu::Window
     self.caption = 'The Game'
     @player = Player.new(self)
     @box = Box.new self, 100, 100
+    @objects = [@box]
   end
 
   def button_down(id)
@@ -26,6 +27,10 @@ class GameWindow < Gosu::Window
 
   def button_up(id)
     @player.send("stop_#{MovementKeys[id]}") if MovementKeys.has_key?(id)
+  end
+
+  def coords_available?(x, y)
+    !@objects.any? { |o| o.occupying?(x, y) }
   end
 
   def draw
