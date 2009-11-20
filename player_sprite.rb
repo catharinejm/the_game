@@ -21,7 +21,7 @@ class PlayerSprite < Sprite
 
   def draw direction, x, y
     img = send(direction)
-    img.draw(x - @center_x, y - @center_y, Layer)
+    img.draw(x, y, Layer)
   end
 
   def down
